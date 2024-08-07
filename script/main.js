@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // container.className = 'container mt-5';
 
     container.innerHTML = `
-      <div class="container d-flex justify-content-center align-items-center min-vh-100 min-vw-100 bg-info">
-    <div id="contenedor" class="card p-4 shadow w-75 w-md-75 w-lg-50 bg-primary">
+      <div class="container d-flex justify-content-center align-items-center min-vh-100 min-vw-100 bg-danger-subtle">
+    <div id="contenedor" class="card p-4 shadow w-75 w-md-75 w-lg-50 bg-danger">
         <h1 class="card-title text-center">Calculadora de IMC</h1>
         <div class="form-group text-center fs-3">
             <label for="weight">Peso (kg):</label>
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <label for="height">Altura (cm):</label>
             <input type="number" id="height" class="form-control text-center" step="0.1">
         </div>
-        <button class="btn btn-info btn-block mt-5 fs-2" onclick="calculateBMI()">Calcular IMC</button>
+        <button class="btn btn-info btn-block mt-5 fs-2 bg-danger-subtle" onclick="calculateBMI()">Calcular IMC</button>
         <div id="result" class="mt-3 text-center">
             <label for="height"></label>
             <input type="number" class="form-control" step="0.1">
@@ -43,6 +43,8 @@ function calculateBMI() {
 
 
 
+//////////////////////////////////////////////////////////////////
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const container = document.createElement('div')
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </select>
                 </div>
                 <button class="btn btn-warning text-dark w-100 fs-5" id="convertBtn">Convertir</button>
-                <h2 class="mt-3 text-center text-warning" id="result"></h2>
+                <h2 class="mt-3 text-center text-warning" id="resultCambio"></h2>
             </div>
         </div>
     `;
@@ -80,22 +82,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const conversion = document.getElementById('conversion').value
         const exchangeRateDollarToPeso = 4139.75
         const exchangeRatePesoToDollar = 1 / exchangeRateDollarToPeso
-        let result 
+        let resultCambio 
         if (isNaN(cantidad) || cantidad <= 0) {
-            result = 'Por favor, ingrese un monto válido'
+            resultCambio = 'Por favor, ingrese un monto válido'
         } else {
             if (conversion === 'dollar-to-peso') {
-                result = cantidad+ ' dólares son ' + (cantidad * exchangeRateDollarToPeso).toFixed(2) +' pesos'
+                resultCambio = cantidad+ ' dólares son ' + (cantidad * exchangeRateDollarToPeso).toFixed(2) +' pesos'
             } else if (conversion === 'peso-to-dollar') {
-                result = cantidad+ ' pesos son ' +(cantidad * exchangeRatePesoToDollar).toFixed(2)+ ' dólares'
+                resultCambio = cantidad+ ' pesos son ' +(cantidad * exchangeRatePesoToDollar).toFixed(2)+ ' dólares'
             }
         }
-        document.getElementById('result').textContent = result
+        document.getElementById('resultCambio').textContent = resultCambio
     }
 
     document.getElementById('convertBtn').addEventListener('click', convert);
 });
 
+
+///////////////////////////////////////////////////
 
 let notas = [
     { id: 1, titulo: "tarea 1", texto: "Esta es la primera tarea", realizada: false },
@@ -105,8 +109,8 @@ let notas = [
 let idGlobal = 2;
 
 function crearInterfaz() {
-    const container = document.getElementById('container');
-    container.innerHTML = `
+    const container3 = document.getElementById('container');
+    container3.innerHTML = `
         <div class="container mt-5 bg-warning">
             <h1 class="mb-4 text-center">Aplicación de Notas</h1>
             <div class="row mb-3">
@@ -226,3 +230,5 @@ document.addEventListener("DOMContentLoaded", () => {
     crearInterfaz();
     aplicarFiltros();
 });
+
+
